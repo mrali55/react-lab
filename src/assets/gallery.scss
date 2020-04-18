@@ -1,0 +1,71 @@
+$img-width:500px;
+$img-height:500px;
+
+
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+  //overflow: hidden;
+}
+
+.imgView{
+  width: $img-width;
+  height: $img-height;
+  position: relative;
+
+
+  div{
+
+    position: absolute;
+    top: 0;
+  }
+
+  img{
+    width: $img-width;
+    height: $img-height;
+  }
+
+}
+
+.imageContainer{
+  transition-property: left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0.1s;
+}
+
+.active{
+  z-index: 1;
+  left:0;
+
+}
+
+.edge{
+  visibility: hidden;
+}
+
+
+
+.right {
+  z-index:-1;
+ left: 500px;
+}
+
+ .left{
+   //visibility: hidden;
+   z-index:-2;
+   left: -500px;
+
+ }
+
+.getNext{
+
+
+}
+.getPrev{
+
+
+}
