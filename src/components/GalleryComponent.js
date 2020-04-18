@@ -43,7 +43,7 @@ class GalleryComponent extends Component{
     }
 
     render() {
-        console.log('g props: ',this.props.data);
+        //console.log('g props: ',this.props.data);
         let imgClass=this.getImgClass();
         return (
             <div className={style.main}>
