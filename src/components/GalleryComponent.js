@@ -5,20 +5,27 @@ class GalleryComponent extends Component{
     constructor(props) {
         super(props);
         this.state={
-            status:0
+            status:0,
+            currentSet:0
         }
     }
 
     toggle(move){
-        let current=this.state.status;
-        move==='next' ? current++ : current--;
-        if (current > 2){
-            current=0;
+        let {status, currentSet} = this.state;
+        move==='next' ? status++ : status--;
+        console.log('currentSet*: ',currentSet );
+
+        if (status > 2){
+            status=0;
+            currentSet++;
         }
-        if (current<0){
-            current=2;
+        if (status<0){
+            status=2;
+            currentSet--;
         }
-        this.setState({status:current})
+        console.log('currentSet**: ',currentSet );
+
+        this.setState({status,currentSet});
     }
 
     getImgClass(){
@@ -43,14 +50,21 @@ class GalleryComponent extends Component{
     }
 
     render() {
-        //console.log('g props: ',this.props.data);
+        console.log('state: ',this.state );
+
         let imgClass=this.getImgClass();
+        let {currentSet} = this.state;
+        let {data} = this.props;
+        console.log('currentSet: ',currentSet );
+        console.log('data: ',data );
+
+
         return (
             <div className={style.main}>
                 <div className={style.imgView}>
-                    <div className={style.imageContainer +' '+ imgClass[0]}><img  src={this.props.data[4].largeImageURL}/></div>
-                    <div className={style.imageContainer +' '+ imgClass[1]}><img  src={this.props.data[3].largeImageURL}/></div>
-                    <div className={style.imageContainer +' '+ imgClass[2]}><img  src={this.props.data[2].largeImageURL}/></div>
+                    <div className={style.imageContainer +' '+ imgClass[0]}><img  src={data[currentSet].largeImageURL}/></div>
+                    <div className={style.imageContainer +' '+ imgClass[1]}><img  src={data[currentSet+1].largeImageURL}/></div>
+                    <div className={style.imageContainer +' '+ imgClass[2]}><img  src={data[currentSet+2].largeImageURL}/></div>
 
 
                 </div>
